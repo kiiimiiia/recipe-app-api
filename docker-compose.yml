@@ -1,0 +1,20 @@
+#use this file to run our idocker image or another services
+version : "3"
+
+#these are aour services:
+services:
+  #its our service
+  app:
+    #Configurations
+    #build configuration
+    build:
+      context: .
+      #connect a port of image to host
+    ports:
+      - "8000":"8000"
+      #Allow update image Automaticlly
+    volumes:
+      - ./app:/app
+    command: >
+      #sh means needs shell
+      sh -c "python manage.py runserver 0.0.0.0:8000"
