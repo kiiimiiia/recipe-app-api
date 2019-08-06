@@ -1,0 +1,15 @@
+#first we a re going to tell it what is our project lan
+language: python
+python:
+  - "3.6"
+
+#tell travis what services we use
+services:
+  - docker
+
+#some required scripts
+before_script: pip intall docker-compose
+
+script:
+  - #intall docker compose for running our commands
+  - docker-compose run app sh -c "python manage.py test && flake8"
